@@ -113,8 +113,8 @@ bool network_v4::is_subnet_of(const network_v4& other) const
 {
   if (other.prefix_length_ >= prefix_length_)
     return false; // Only real subsets are allowed.
-  const network_v4 me(address_, other.prefix_length_);
-  return other.canonical() == me.canonical();
+  const network_v4 local_me(address_, other.prefix_length_);
+  return other.canonical() == local_me.canonical();
 }
 
 std::string network_v4::to_string() const
